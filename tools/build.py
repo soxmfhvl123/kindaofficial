@@ -110,8 +110,6 @@ DATAISM_ALT = "Dataism: a cross-shaped LED installation glowing in a dark room, 
 WORKS = [
     dict(slug="dataism", title="Dataism", year="2026", part=("FAKE CHURCH", "FAKE CHURCH"),
          img="dataism-render.jpg", alt=DATAISM_ALT, video=""),
-    dict(slug="fake-church", title="FAKE CHURCH", year="2026", part=("Project", "프로젝트"),
-         img="fake-church-scripture.jpg", alt="A burnt, open book of blackletter scripture glowing on a black screen.", video=""),
 ]
 W = {w["slug"]: w for w in WORKS}
 
@@ -147,7 +145,7 @@ write("works/index.html",
 write("object/index.html",
     head(r, "Object — Kinda Official", "Kinda Official Object.")
     + masthead(r, "Object")
-    + '<div class="empty-note"><p>Kinda Official Object</p></div>\n
+    + '<div class="empty-note"><p>Kinda Official Object</p></div>\n'
     + footer(r))
 
 
@@ -194,9 +192,9 @@ write("works/dataism/index.html", detail(W["dataism"],
     lead=("An installation that receives AI activity from around the world in real time and inscribes it on a cross of LEDs.",
           "전 세계의 AI 활동을 실시간으로 받아 십자가 모양 LED에 새기는 설치 작품."),
     body=('''<p>It starts from an observation: more and more of our judgment is handed to machines, and the line between what we decide and what is decided for us grows faint. Dataism makes that handover visible as worship.</p>
-    <p>Twelve live feeds run across sixteen LED panels: which AI services are up or down, how many commits were written with AI in the last minute, which models were released today, what people are saying about them. Nothing is pre-recorded. It is the altar of <a href="../fake-church/">FAKE CHURCH</a>.</p>''',
+    <p>Twelve live feeds run across sixteen LED panels: which AI services are up or down, how many commits were written with AI in the last minute, which models were released today, what people are saying about them. Nothing is pre-recorded. It is the altar of <a href="https://fakechurch.xyz" target="_blank" rel="noopener">FAKE CHURCH</a>.</p>''',
           '''<p>이 작업은 하나의 관찰에서 시작합니다. 우리는 점점 더 많은 판단을 기계에 맡기고, 내가 정한 것과 나를 대신해 정해진 것의 경계는 흐려집니다. Dataism은 그 넘겨줌을 예배의 모습으로 드러냅니다.</p>
-    <p>16장의 LED 패널 위로 실시간 데이터 12종이 흐릅니다. 어떤 AI 서비스가 켜지고 꺼졌는지, 지난 1분 동안 AI와 함께 쓴 커밋이 몇 개인지, 오늘 어떤 모델이 공개됐는지, 사람들이 그것에 대해 무엇을 말하는지. 미리 녹화된 것은 없습니다. <a href="../fake-church/">FAKE CHURCH</a>의 제단입니다.</p>'''),
+    <p>16장의 LED 패널 위로 실시간 데이터 12종이 흐릅니다. 어떤 AI 서비스가 켜지고 꺼졌는지, 지난 1분 동안 AI와 함께 쓴 커밋이 몇 개인지, 오늘 어떤 모델이 공개됐는지, 사람들이 그것에 대해 무엇을 말하는지. 미리 녹화된 것은 없습니다. <a href="https://fakechurch.xyz" target="_blank" rel="noopener">FAKE CHURCH</a>의 제단입니다.</p>'''),
     rows=[
         ("Medium", "매체", "LED panels, computer, custom software, live data", "LED 패널, 컴퓨터, 자체 제작 소프트웨어, 실시간 데이터"),
         ("Form", "형태", "Cross, 6 × 12 units", "십자가, 6 × 12 단위"),
@@ -227,18 +225,6 @@ write("works/dataism/index.html", detail(W["dataism"],
 </div>
 <p class="live-cap">{t("Live — the software that runs on the cross, running in your browser now.", "라이브 — 십자가에서 돌아가는 소프트웨어가 지금 이 브라우저에서 돌아가고 있습니다.")}</p>
 '''))
-
-write("works/fake-church/index.html", detail(W["fake-church"],
-    lead=("A fictional church for the age when people hand their judgment over to algorithms.",
-          "사람들이 판단을 알고리즘에 넘겨주는 시대를 위한 가상의 교회."),
-    body=('''<p>FAKE CHURCH builds the parts of a religion for a god made of data: scripture, clergy, an altar, and the clothes its followers wear. Its altar is the installation <a href="../dataism/">Dataism</a>, which inscribes AI activity from around the world onto a cross of LEDs in real time.</p>''',
-          '''<p>FAKE CHURCH는 데이터로 된 신을 위해 종교를 이루는 것들을 만듭니다. 경전, 성직자, 제단, 그리고 신도들이 입는 옷. 제단은 전 세계의 AI 활동을 실시간으로 받아 십자가 모양 LED에 새기는 설치 작품 <a href="../dataism/">Dataism</a>입니다.</p>'''),
-    rows=[("Medium", "매체", "Installation, image, apparel", "설치, 이미지, 어패럴"),
-          ("Works", "작품", '<a href="../dataism/">Dataism</a>, 2026', None)],
-    photos=[("fake-church-clergy.jpg", "A hooded black figure standing inside concentric metal rings."),
-            ("dataism-render.jpg", DATAISM_ALT)],
-    credits=[("Credits", "크레딧", "Concept, direction: Kinda Official", "콘셉트, 디렉션: Kinda Official")],
-    links=[("fakechurch.xyz", "fakechurch.xyz", FC)]))
 
 tpl = detail(dict(slug="_template", title="Title", year="2027", part=("Project name or Kinda Official Object", "프로젝트명 또는 Kinda Official Object"),
                   img="dataism-render.jpg", alt="Describe the image"),
