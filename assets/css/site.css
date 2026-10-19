@@ -53,6 +53,7 @@ body.home .masthead { position: fixed; top: 0; left: 0; right: 0; z-index: 10; c
 .item .cap { margin-top: 10px; font-size: 13px; }
 .item:hover { opacity: 1; }
 .item:hover .cap { opacity: .55; }
+.intro { margin: 0; padding: 20px var(--gutter) 0; color: var(--muted); }
 .empty-note { padding: 24px var(--gutter) 120px; color: var(--muted); }
 
 /* ---------- work page ---------- */

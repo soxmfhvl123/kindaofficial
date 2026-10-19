@@ -1,6 +1,6 @@
 """Builds every page of kindaofficial.xyz.  Run:  python3 tools/build.py
 
-Edit the content here (works, texts, contact), run it, then commit the generated HTML.
+Edit the content here (works in WORKS, texts, contact), run it, then commit the generated HTML.
 Text comes in pairs: t("English", "한국어").  Pressing L on the site switches language.
 """
 import os, time
@@ -48,7 +48,7 @@ def head(r, title, desc, body_cls="", extra=""):
 
 
 def masthead(r, cur):
-    items = [("works/", "Works", "작업"), ("object/", "Object", "오브젝트"),
+    items = [("object/", "Object", "오브젝트"),
              ("studio/", "Studio", "스튜디오"), ("records/", "Records", "기록")]
     AC = ' aria-current="page"'
     nav = "".join(f'<a href="{r}{h}"{AC if en == cur else ""}>{t(en, ko)}</a>' for h, en, ko in items)
@@ -128,25 +128,20 @@ r = ""
 write("index.html",
     head(r, "Kinda Official", ONE_LINE, body_cls="home")
     + masthead(r, "")
-    + f'''<a class="cover" href="works/dataism/">
+    + f'''<a class="cover" href="object/dataism/">
   <video src="assets/video/dataism.mp4" autoplay muted loop playsinline preload="auto" poster="assets/img/dataism-render.jpg" aria-label="{DATAISM_ALT}"></video>
   <span class="cap">Dataism, 2026</span>
 </a>
 '''
     + footer(r))
 
-# ================= WORKS =================
+# ================= OBJECT: every work =================
 r = "../"
-write("works/index.html",
-    head(r, "Works — Kinda Official", "Works by Kinda Official.")
-    + masthead(r, "Works") + grid(r, WORKS, "") + footer(r))
-
-# ================= OBJECT =================
 write("object/index.html",
     head(r, "Object — Kinda Official", "Kinda Official Object.")
     + masthead(r, "Object")
-    + '<div class="empty-note"><p>Kinda Official Object</p></div>\n'
-    + footer(r))
+    + '<p class="intro">Kinda Official Object</p>\n'
+    + grid(r, WORKS, "") + footer(r))
 
 
 # ================= WORK PAGE (same order for every work) =================
@@ -165,7 +160,7 @@ def detail(w, lead, body, rows, photos=(), extra="", links=(), credits=()):
         ko = " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{k} ↗</a>' for _, k, u in links)
         all_rows.append(("Links", "링크", en, ko))
     return (head(r, f"{w['title']}, {w['year']} — Kinda Official", f"{w['title']}, {w['year']}. {lead[0]}")
-        + masthead(r, "Works")
+        + masthead(r, "Object")
         + f'''<section class="hero">
   <!-- Documentation video, 1–2 min: swap the <img> for <video controls> or a Vimeo <iframe> when filmed. -->
   <img src="../../assets/img/{w['img']}" alt="{w['alt']}" fetchpriority="high">
@@ -188,7 +183,7 @@ def detail(w, lead, body, rows, photos=(), extra="", links=(), credits=()):
         + footer(r))
 
 
-write("works/dataism/index.html", detail(W["dataism"],
+write("object/dataism/index.html", detail(W["dataism"],
     lead=("An installation that receives AI activity from around the world in real time and inscribes it on a cross of LEDs.",
           "전 세계의 AI 활동을 실시간으로 받아 십자가 모양 LED에 새기는 설치 작품."),
     body=('''<p>It starts from an observation: more and more of our judgment is handed to machines, and the line between what we decide and what is decided for us grows faint. Dataism makes that handover visible as worship.</p>
@@ -233,7 +228,7 @@ tpl = detail(dict(slug="_template", title="Title", year="2027", part=("Project n
     rows=[("Material", "재료", "…", "…"), ("Dimensions", "크기", "…", "…"),
           ("Data / sensors", "데이터·센서", "…", "…"), ("Power &amp; installation", "전원·설치", "…", "…")])
 tpl = tpl.replace("<title>", '<meta name="robots" content="noindex">\n<!-- TEMPLATE: add the work to WORKS in tools/build.py and write a detail() call for it, then run the script.\n     Object pieces: add dimensions, weight and edition size to Details. -->\n<title>', 1)
-write("works/_template/index.html", tpl)
+write("object/_template/index.html", tpl)
 
 # ================= STUDIO =================
 r = "../"
