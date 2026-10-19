@@ -145,11 +145,9 @@ write("works/index.html",
 
 # ================= OBJECT =================
 write("object/index.html",
-    head(r, "Object — Kinda Official", "Kinda Official Object: steel furniture that senses the person who sits on it and answers in light.")
+    head(r, "Object — Kinda Official", "Kinda Official Object.")
     + masthead(r, "Object")
-    + '<div class="empty-note">' + t(
-        "Kinda Official Object — steel furniture that senses the person who sits on it and answers in light. First pieces coming soon.",
-        "Kinda Official Object — 앉은 사람을 감지해 빛으로 답하는 스틸 가구. 첫 작품을 곧 공개합니다.", "p") + "</div>\n"
+    + '<div class="empty-note"><p>Kinda Official Object</p></div>\n
     + footer(r))
 
 
