@@ -24,7 +24,7 @@
   function setLang(lang, announce) {
     root.setAttribute("data-lang", lang);
     root.lang = lang;
-    try { localStorage.setItem("ko-lang", lang); } catch (e) {}
+    try { sessionStorage.setItem("site-lang", lang); } catch (e) {}
     document.querySelectorAll("[data-ph-" + lang + "]").forEach(function (el) {
       el.placeholder = el.getAttribute("data-ph-" + lang);
     });

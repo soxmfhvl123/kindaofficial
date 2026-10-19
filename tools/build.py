@@ -37,7 +37,7 @@ def head(r, title, desc, body_cls="", extra=""):
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{r}assets/img/dataism-render.jpg">
 <link rel="icon" href="{FAVICON}">
-<script>try{{var l=localStorage.getItem("ko-lang");if(l){{document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}}}catch(e){{}}</script>
+<script>try{{var l=sessionStorage.getItem("site-lang");if(l){{document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
