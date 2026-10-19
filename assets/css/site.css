@@ -139,3 +139,4 @@ html[data-lang="ko"] body { word-break: keep-all; }
   opacity: 0; pointer-events: none; transition: opacity .25s;
 }
 .lang-toast.on { opacity: 1; }
+.hero.more { margin-bottom: 40px; }

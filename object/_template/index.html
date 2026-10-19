@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<!-- TEMPLATE: add the work to WORKS in tools/build.py and write a detail() call for it, then run the script.
-     Object pieces: add dimensions, weight and edition size to Details. -->
+<!-- TEMPLATE: put the videos and a poster.jpg in object/<slug>/, add the work to WORKS in tools/build.py,
+     write a detail() call for it, then run: python3 tools/build.py -->
 <title>Title, 2027 — Kinda Official</title>
-<meta name="description" content="Title, 2027. One or two sentences on what the work is.">
+<meta name="description" content="Describe the piece">
 <meta property="og:title" content="Title, 2027 — Kinda Official">
-<meta property="og:description" content="Title, 2027. One or two sentences on what the work is.">
-<meta property="og:image" content="../../assets/img/dataism-render.jpg">
+<meta property="og:description" content="Describe the piece">
+<meta property="og:image" content="https://kindaofficial.xyz/object/warmwelcome/poster.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2300ff00'/%3E%3C/svg%3E">
 <script>try{var l=sessionStorage.getItem("site-lang");if(l){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/site.css?v=202610192242">
+<link rel="stylesheet" href="../../assets/css/site.css?v=202610192308">
 </head>
 <body>
 <header class="masthead">
@@ -26,22 +26,22 @@
 </header>
 <main>
 <section class="hero">
-  <!-- Documentation video, 1–2 min: swap the <img> for <video controls> or a Vimeo <iframe> when filmed. -->
-  <img src="../../assets/img/dataism-render.jpg" alt="Describe the image" fetchpriority="high">
+  <video src="../warmwelcome/warmwelcome.mp4" autoplay muted loop playsinline preload="auto" poster="../warmwelcome/poster.jpg" aria-label="Describe the piece"></video>
 </section>
 
 <section class="text">
-  <div><h1>Title, 2027</h1><div class="muted"><span class="en">Project name or Kinda Official Object</span><span class="ko" lang="ko">프로젝트명 또는 Kinda Official Object</span></div></div>
+  <div><h1>Title, 2027</h1><div class="muted">Kinda Official Object</div></div>
   <div class="body">
-    <p class="en lead">One or two sentences on what the work is.</p><p class="ko lead" lang="ko">작품이 무엇인지 한두 문장.</p>
-    <div class="en"><p>The observation it starts from, then how it works.</p></div>
-    <div class="ko" lang="ko"><p>출발한 관찰, 그리고 작동 방식.</p></div>
+    <div class="en"><p class="lead">One sentence on what the piece is.</p>
+    <p>Then what it does, and why.</p></div>
+    <div class="ko" lang="ko"><p class="lead">작품이 무엇인지 한 문장.</p>
+    <p>무엇을 하는지, 왜 그런지.</p></div>
   </div>
 </section>
 
 <section class="text">
   <h2 class="muted"><span class="en">Details</span><span class="ko" lang="ko">정보</span></h2>
-  <div class="body"><table class="facts"><tr><th><span class="en">Material</span><span class="ko" lang="ko">재료</span></th><td><span class="en">…</span><span class="ko" lang="ko">…</span></td></tr><tr><th><span class="en">Dimensions</span><span class="ko" lang="ko">크기</span></th><td><span class="en">…</span><span class="ko" lang="ko">…</span></td></tr><tr><th><span class="en">Data / sensors</span><span class="ko" lang="ko">데이터·센서</span></th><td><span class="en">…</span><span class="ko" lang="ko">…</span></td></tr><tr><th><span class="en">Power &amp; installation</span><span class="ko" lang="ko">전원·설치</span></th><td><span class="en">…</span><span class="ko" lang="ko">…</span></td></tr><tr><th><span class="en">Exhibitions</span><span class="ko" lang="ko">전시</span></th><td><span class="en">First public showing to be announced.</span><span class="ko" lang="ko">첫 공개 일정은 추후 안내합니다.</span></td></tr><tr><th><span class="en">Enquiries</span><span class="ko" lang="ko">문의</span></th><td><a href="mailto:hello@kindaofficial.com?subject=Title">hello@kindaofficial.com</a></td></tr></table></div>
+  <div class="body"><table class="facts"><tr><th><span class="en">Material</span><span class="ko" lang="ko">재료</span></th><td><span class="en">…</span><span class="ko" lang="ko">…</span></td></tr><tr><th><span class="en">Dimensions</span><span class="ko" lang="ko">크기</span></th><td><span class="en">…</span><span class="ko" lang="ko">…</span></td></tr><tr><th><span class="en">Edition</span><span class="ko" lang="ko">에디션</span></th><td><span class="en">…</span><span class="ko" lang="ko">…</span></td></tr><tr><th><span class="en">Exhibitions</span><span class="ko" lang="ko">전시</span></th><td><span class="en">First public showing to be announced.</span><span class="ko" lang="ko">첫 공개 일정은 추후 안내합니다.</span></td></tr><tr><th><span class="en">Enquiries</span><span class="ko" lang="ko">문의</span></th><td><a href="mailto:hello@kindaofficial.com?subject=Title">hello@kindaofficial.com</a></td></tr></table></div>
 </section>
 </main>
 <footer class="footer">
@@ -62,6 +62,6 @@
   </div>
 </footer>
 <div class="lang-toast" aria-live="polite"></div>
-<script src="../../assets/js/site.js?v=202610192242"></script>
+<script src="../../assets/js/site.js?v=202610192308"></script>
 </body>
 </html>
