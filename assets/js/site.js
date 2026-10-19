@@ -19,9 +19,37 @@
     });
   }
 
+  /* Language: press L to switch between English and 한국어. */
+  var root = document.documentElement, toast = document.querySelector(".lang-toast"), toastT;
+  function setLang(lang, announce) {
+    root.setAttribute("data-lang", lang);
+    root.lang = lang;
+    try { localStorage.setItem("ko-lang", lang); } catch (e) {}
+    document.querySelectorAll("[data-ph-" + lang + "]").forEach(function (el) {
+      el.placeholder = el.getAttribute("data-ph-" + lang);
+    });
+    if (announce && toast) {
+      toast.textContent = lang === "ko" ? "한국어" : "English";
+      toast.classList.add("on");
+      clearTimeout(toastT);
+      toastT = setTimeout(function () { toast.classList.remove("on"); }, 900);
+    }
+  }
+  setLang(root.getAttribute("data-lang") === "ko" ? "ko" : "en", false);
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "l" && e.key !== "L" && e.key !== "ㅣ") return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (e.target.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || tag === "select" || e.target.isContentEditable) return;
+    setLang(root.getAttribute("data-lang") === "ko" ? "en" : "ko", true);
+  });
+
   document.querySelectorAll("[data-interact]").forEach(function (b) {
+    var en = b.querySelector(".en"), ko = b.querySelector(".ko");
     b.addEventListener("click", function () {
-      b.textContent = b.parentNode.classList.toggle("on") ? "Done" : "Interact";
+      var on = b.parentNode.classList.toggle("on");
+      en.textContent = on ? "Done" : "Interact";
+      ko.textContent = on ? "완료" : "조작하기";
     });
   });
 
