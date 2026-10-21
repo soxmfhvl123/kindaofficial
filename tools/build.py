@@ -11,8 +11,8 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EMAIL = "hello@kindaofficial.com"   # placeholder — replace with the real address
 INSTA = "kindaofficial_official"
 FC = "https://fakechurch.xyz"
-ONE_LINE = "Kinda Official is a Seoul-based duo turning data into light and space, to show where people stand among machines."
-ONE_LINE_KO = "Kinda Official은 데이터를 빛과 공간으로 바꿔, 기술 속 사람의 자리를 보여주는 서울의 2인 스튜디오입니다."
+ONE_LINE = "Kinda Official is a Seoul-based duo making furniture that connects people and space through light."
+ONE_LINE_KO = "Kinda Official은 빛으로 사람과 공간, 가구를 잇는 서울의 2인 스튜디오입니다."
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2300ff00'/%3E%3C/svg%3E"
 IG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>'
 
@@ -224,11 +224,11 @@ write("studio/index.html",
     {t(ONE_LINE, ONE_LINE_KO, "p", "lead")}
     <div class="en">
     <p>Kinda Official was founded in Seoul by art director Jin Choi, who leads the creative work, and WooChan Kim, who runs business and operations.</p>
-    <p>The name holds the question behind every work. More and more, the official answers come from machines, down to what we choose. Kinda Official looks at what those answers leave out: the place where people still stand.</p>
+    <p>The name holds the question behind every piece. A room can be designed to look official: correct, complete, finished. Kinda Official is interested in what makes it someone’s, the person who comes home, sits down and leaves a trace. Our furniture notices that person and answers in light, so that a space begins to recognise the people inside it.</p>
     </div>
     <div class="ko" lang="ko">
     <p>Kinda Official은 작업 전체를 이끄는 아트디렉터 최동진과 사업과 운영을 맡은 김우찬이 서울에서 시작한 2인 스튜디오입니다.</p>
-    <p>이름에는 모든 작업의 질문이 담겨 있습니다. 오늘날 공식적인 답은 점점 기계가 정합니다. 우리가 무엇을 고를지까지도요. Kinda Official은 그 답이 미처 닿지 않는 곳, 여전히 사람이 서 있는 자리를 들여다봅니다.</p>
+    <p>이름에는 모든 작업의 질문이 담겨 있습니다. 공간은 반듯하고 완성된, ‘공식적인’ 모습으로 설계될 수 있습니다. Kinda Official은 그 공간을 누군가의 것으로 만드는 것, 집에 돌아오고, 앉고, 흔적을 남기는 사람에게 관심을 둡니다. 우리의 가구는 그 사람을 알아채고 빛으로 답해, 공간이 그 안의 사람을 알아보게 만듭니다.</p>
     </div>
   </div>
 </section>
