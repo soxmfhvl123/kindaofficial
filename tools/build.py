@@ -1,4 +1,4 @@
-"""Builds every page of kindaofficial.xyz.  Run:  python3 tools/build.py
+"""Builds every page of the Kinda Official site (cdj.kr).  Run:  python3 tools/build.py
 
 Edit the content here (works in WORKS, texts, contact), run it, then commit the generated HTML.
 Text comes in pairs: t("English", "한국어").  Pressing L on the site switches language.
@@ -11,6 +11,7 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EMAIL = "hello@kindaofficial.com"   # placeholder — replace with the real address
 INSTA = "kindaofficial_official"
 FC = "https://fakechurch.xyz"
+SITE_URL = "https://cdj.kr/"   # the site's address (share links: og:url, og:image)
 ONE_LINE = "Kinda Official is a Seoul-based duo making furniture that connects people and space through light."
 ONE_LINE_KO = "Kinda Official은 빛으로 사람과 공간, 가구를 잇는 서울의 2인 스튜디오입니다."
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2300ff00'/%3E%3C/svg%3E"
@@ -23,8 +24,10 @@ def t(en, ko, tag="span", cls=""):
     return f'<{tag} class="en{c}">{en}</{tag}><{tag} class="ko{c}" lang="ko">{ko}</{tag}>'
 
 
-def head(r, title, desc, body_cls="", extra=""):
+def head(r, title, desc, body_cls="", extra="", url=None):
+    """url: the page's path under SITE_URL (for og:url); None leaves og:url out."""
     bc = f' class="{body_cls}"' if body_cls else ""
+    og_url = f'<meta property="og:url" content="{SITE_URL}{url}">\n' if url is not None else ""
     return f'''<!doctype html>
 <html lang="en" data-lang="en">
 <head>
@@ -34,8 +37,8 @@ def head(r, title, desc, body_cls="", extra=""):
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://kindaofficial.xyz/{OG}">
-<link rel="icon" href="{FAVICON}">
+<meta property="og:image" content="{SITE_URL}{OG}">
+{og_url}<link rel="icon" href="{FAVICON}">
 <script>try{{var l=sessionStorage.getItem("site-lang");if(l){{document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +137,7 @@ def video(src, poster, label, eager=False):
 r = ""
 w = W["warmwelcome"]
 write("index.html",
-    head(r, "Kinda Official", ONE_LINE, body_cls="home")
+    head(r, "Kinda Official", ONE_LINE, body_cls="home", url="")
     + masthead(r, "")
     + f'''<a class="cover" href="object/{w['slug']}/">
   {video(f"object/{w['slug']}/{w['videos'][0]}", f"object/{w['slug']}/{w['poster']}", w['alt'], eager=True)}
@@ -146,7 +149,7 @@ write("index.html",
 # ================= OBJECT: every work =================
 r = "../"
 write("object/index.html",
-    head(r, "Object — Kinda Official", "Kinda Official Object.")
+    head(r, "Object — Kinda Official", "Kinda Official Object.", url="object/")
     + masthead(r, "Object")
     + '<p class="intro">Kinda Official Object</p>\n'
     + grid(r, WORKS) + footer(r))
@@ -163,7 +166,8 @@ def detail(w, body, rows=(), noindex=False):
     extra_videos = "".join(f'<section class="hero more">{video(v, w["poster"], w["alt"])}</section>\n' for v in more)
     desc = w["alt"]
     return (head(r, f"{w['title']}, {w['year']} — Kinda Official", desc,
-                 extra='<meta name="robots" content="noindex">\n' if noindex else "")
+                 extra='<meta name="robots" content="noindex">\n' if noindex else "",
+                 url=f"object/{w['slug']}/")
         + masthead(r, "Object")
         + f'''<section class="hero">
   {video(first, w["poster"], w["alt"], eager=True)}
@@ -216,7 +220,7 @@ write("object/_template/index.html", tpl)
 # ================= STUDIO =================
 r = "../"
 write("studio/index.html",
-    head(r, "Studio — Kinda Official", ONE_LINE)
+    head(r, "Studio — Kinda Official", ONE_LINE, url="studio/")
     + masthead(r, "Studio")
     + f'''<section class="text">
   <h1>{t("Studio", "스튜디오")}</h1>
@@ -244,7 +248,7 @@ write("studio/index.html",
 
 # ================= RECORDS =================
 write("records/index.html",
-    head(r, "Records — Kinda Official", "Exhibitions and press for Kinda Official.")
+    head(r, "Records — Kinda Official", "Exhibitions and press for Kinda Official.", url="records/")
     + masthead(r, "Records")
     + f'''<section class="text">
   <h1>{t("Exhibitions", "전시")}</h1>
