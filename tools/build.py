@@ -1,4 +1,4 @@
-"""Builds every page of the Kinda Official site (cdj.kr).  Run:  python3 tools/build.py
+"""Builds every page of the Choi DongJin site (cdj.kr).  Run:  python3 tools/build.py
 
 Edit the content here (works in WORKS, texts, contact), run it, then commit the generated HTML.
 Text comes in pairs: t("English", "한국어").  Pressing L on the site switches language.
@@ -8,14 +8,13 @@ VER = time.strftime("%Y%m%d%H%M")
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # ---- contact & links ----
-EMAIL = "hello@kindaofficial.com"   # placeholder — replace with the real address
-INSTA = "kindaofficial_official"
-FC = "https://fakechurch.xyz"
+EMAIL = "hello@cdj.kr"
+BRAND = "Choi DongJin"
+KO_SITE = "https://kindaofficial.xyz"   # the studio site
 SITE_URL = "https://cdj.kr/"   # the site's address (share links: og:url, og:image)
-ONE_LINE = "Kinda Official is a Seoul-based duo making furniture that connects people and space through light."
-ONE_LINE_KO = "Kinda Official은 빛으로 사람과 공간, 가구를 잇는 서울의 2인 스튜디오입니다."
+ONE_LINE = "Choi DongJin is a Seoul-based furniture brand that connects people and space through light."
+ONE_LINE_KO = "Choi DongJin은 빛으로 사람과 공간, 가구를 잇는 서울의 가구 브랜드입니다."
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2300ff00'/%3E%3C/svg%3E"
-IG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>'
 
 
 def t(en, ko, tag="span", cls=""):
@@ -55,9 +54,8 @@ def masthead(r, cur):
     AC = ' aria-current="page"'
     nav = "".join(f'<a href="{r}{h}"{AC if en == cur else ""}>{t(en, ko)}</a>' for h, en, ko in items)
     return f'''<header class="masthead">
-  <a class="logo" href="{r or './'}" aria-label="Kinda Official, home"><i>kinda</i> Official</a>
+  <a class="logo" href="{r or './'}" aria-label="{BRAND}, home">{BRAND}</a>
   <nav class="nav" aria-label="Main">{nav}</nav>
-  <div class="social"><a href="https://instagram.com/{INSTA}" target="_blank" rel="noopener" aria-label="Instagram">{IG}</a></div>
 </header>
 <main>
 '''
@@ -66,11 +64,11 @@ def masthead(r, cur):
 def footer(r):
     return f'''</main>
 <footer class="footer">
-  <span class="copy">© Kinda Official, <span data-year>2026</span></span>
+  <span class="copy">© {BRAND}, <span data-year>2026</span></span>
   <ul>
     <li><a href="{r}studio/">{t("About", "소개")}</a></li>
     <li><a href="mailto:{EMAIL}">{t("Contact", "문의")}</a></li>
-    <li><a href="https://instagram.com/{INSTA}" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official ↗</a></li>
   </ul>
   <div class="signup">
     <!-- To connect a newsletter service, set the form's action/method to its signup endpoint
@@ -137,7 +135,7 @@ def video(src, poster, label, eager=False):
 r = ""
 w = W["warmwelcome"]
 write("index.html",
-    head(r, "Kinda Official", ONE_LINE, body_cls="home", url="")
+    head(r, BRAND, ONE_LINE, body_cls="home", url="")
     + masthead(r, "")
     + f'''<a class="cover" href="object/{w['slug']}/">
   {video(f"object/{w['slug']}/{w['videos'][0]}", f"object/{w['slug']}/{w['poster']}", w['alt'], eager=True)}
@@ -149,9 +147,9 @@ write("index.html",
 # ================= OBJECT: every work =================
 r = "../"
 write("object/index.html",
-    head(r, "Object — Kinda Official", "Kinda Official Object.", url="object/")
+    head(r, f"Object — {BRAND}", f"Furniture by {BRAND}.", url="object/")
     + masthead(r, "Object")
-    + '<p class="intro">Kinda Official Object</p>\n'
+    + f'<p class="intro">{BRAND} Object</p>\n'
     + grid(r, WORKS) + footer(r))
 
 
@@ -165,7 +163,7 @@ def detail(w, body, rows=(), noindex=False):
         ("Enquiries", "문의", f'<a href="mailto:{EMAIL}?subject={w["title"]}">{EMAIL}</a>', None)]
     extra_videos = "".join(f'<section class="hero more">{video(v, w["poster"], w["alt"])}</section>\n' for v in more)
     desc = w["alt"]
-    return (head(r, f"{w['title']}, {w['year']} — Kinda Official", desc,
+    return (head(r, f"{w['title']}, {w['year']} — {BRAND}", desc,
                  extra='<meta name="robots" content="noindex">\n' if noindex else "",
                  url=f"object/{w['slug']}/")
         + masthead(r, "Object")
@@ -174,7 +172,7 @@ def detail(w, body, rows=(), noindex=False):
 </section>
 
 <section class="text">
-  <div><h1>{w['title']}, {w['year']}</h1><div class="muted">Kinda Official Object</div></div>
+  <div><h1>{w['title']}, {w['year']}</h1><div class="muted">{BRAND}</div></div>
   <div class="body">
     <div class="en">{body[0]}</div>
     <div class="ko" lang="ko">{body[1]}</div>
@@ -220,19 +218,19 @@ write("object/_template/index.html", tpl)
 # ================= STUDIO =================
 r = "../"
 write("studio/index.html",
-    head(r, "Studio — Kinda Official", ONE_LINE, url="studio/")
+    head(r, f"Studio — {BRAND}", ONE_LINE, url="studio/")
     + masthead(r, "Studio")
     + f'''<section class="text">
   <h1>{t("Studio", "스튜디오")}</h1>
   <div class="body">
     {t(ONE_LINE, ONE_LINE_KO, "p", "lead")}
     <div class="en">
-    <p>Kinda Official was founded in Seoul by art director Jin Choi, who leads the creative work, and WooChan Kim, who runs business and operations.</p>
-    <p>The name holds the question behind every piece. A room can be designed to look official: correct, complete, finished. Kinda Official is interested in what makes it someone’s, the person who comes home, sits down and leaves a trace. Our furniture notices that person and answers in light, so that a space begins to recognise the people inside it.</p>
+    <p>Choi DongJin is made in Seoul by art director Jin Choi, who leads the design, and WooChan Kim, who runs business and operations. The two also run the studio <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>.</p>
+    <p>A room can be designed to look finished: correct, complete, official. Choi DongJin is interested in what makes it someone’s, the person who comes home, sits down and leaves a trace. The furniture notices that person and answers in light, so that a space begins to recognise the people inside it.</p>
     </div>
     <div class="ko" lang="ko">
-    <p>Kinda Official은 작업 전체를 이끄는 아트디렉터 최동진과 사업과 운영을 맡은 김우찬이 서울에서 시작한 2인 스튜디오입니다.</p>
-    <p>이름에는 모든 작업의 질문이 담겨 있습니다. 공간은 반듯하고 완성된, ‘공식적인’ 모습으로 설계될 수 있습니다. Kinda Official은 그 공간을 누군가의 것으로 만드는 것, 집에 돌아오고, 앉고, 흔적을 남기는 사람에게 관심을 둡니다. 우리의 가구는 그 사람을 알아채고 빛으로 답해, 공간이 그 안의 사람을 알아보게 만듭니다.</p>
+    <p>Choi DongJin은 디자인을 이끄는 아트디렉터 최동진과 사업과 운영을 맡은 김우찬이 서울에서 만듭니다. 두 사람은 스튜디오 <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>도 함께 운영합니다.</p>
+    <p>공간은 반듯하고 완성된, ‘공식적인’ 모습으로 설계될 수 있습니다. Choi DongJin은 그 공간을 누군가의 것으로 만드는 것, 집에 돌아오고, 앉고, 흔적을 남기는 사람에게 관심을 둡니다. 가구는 그 사람을 알아채고 빛으로 답해, 공간이 그 안의 사람을 알아보게 만듭니다.</p>
     </div>
   </div>
 </section>
@@ -240,7 +238,6 @@ write("studio/index.html",
 <section class="text">
   <h2 class="muted">{t("Contact", "연락처")}</h2>
   <div class="body">{facts([("General", "일반 문의", f'<a href="mailto:{EMAIL}">{EMAIL}</a>', None),
-                            ("Instagram", "Instagram", f'<a href="https://instagram.com/{INSTA}" target="_blank" rel="noopener">@{INSTA}</a>', None),
                             ("Collaborations", "협업", "Festivals, museums, galleries, collectors, brands and spaces", "페스티벌, 미술관, 갤러리, 컬렉터, 브랜드, 공간")])}</div>
 </section>
 '''
@@ -248,7 +245,7 @@ write("studio/index.html",
 
 # ================= RECORDS =================
 write("records/index.html",
-    head(r, "Records — Kinda Official", "Exhibitions and press for Kinda Official.", url="records/")
+    head(r, f"Records — {BRAND}", f"Exhibitions and press for {BRAND}.", url="records/")
     + masthead(r, "Records")
     + f'''<section class="text">
   <h1>{t("Exhibitions", "전시")}</h1>
@@ -264,8 +261,8 @@ write("records/index.html",
 # ================= 404 (root-absolute: served at any path) =================
 r = "/"
 write("404.html",
-    head(r, "Not found — Kinda Official", "This page does not exist.")
+    head(r, f"Not found — {BRAND}", "This page does not exist.")
     + masthead(r, "")
-    + f'<section class="void">{t("This page does not officially exist.", "요청하신 페이지는 공식적으로 존재하지 않습니다.", "h1")}<a href="/">{t("Back to home", "홈으로")}</a></section>\n'
+    + f'<section class="void">{t("This page does not exist.", "요청하신 페이지가 없습니다.", "h1")}<a href="/">{t("Back to home", "홈으로")}</a></section>\n'
     + footer(r))
 print("ok")
