@@ -226,11 +226,9 @@ write("studio/index.html",
     {t(ONE_LINE, ONE_LINE_KO, "p", "lead")}
     <div class="en">
     <p>CDJ is made in Seoul by art director Jin Choi, who leads the design, and WooChan Kim, who runs business and operations. Jin Choi also runs the studio <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>.</p>
-    <p>A room can be designed to look finished: correct, complete, official. CDJ is interested in what makes it someone’s, the person who comes home, sits down and leaves a trace. The furniture notices that person and answers in light, so that a space begins to recognise the people inside it.</p>
     </div>
     <div class="ko" lang="ko">
     <p>CDJ는 디자인을 이끄는 아트디렉터 최동진과 사업과 운영을 맡은 김우찬이 서울에서 만듭니다. 최동진은 스튜디오 <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>도 운영합니다.</p>
-    <p>공간은 반듯하고 완성된, ‘공식적인’ 모습으로 설계될 수 있습니다. CDJ는 그 공간을 누군가의 것으로 만드는 것, 집에 돌아오고, 앉고, 흔적을 남기는 사람에게 관심을 둡니다. 가구는 그 사람을 알아채고 빛으로 답해, 공간이 그 안의 사람을 알아보게 만듭니다.</p>
     </div>
   </div>
 </section>
