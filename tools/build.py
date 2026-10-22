@@ -1,4 +1,4 @@
-"""Builds every page of the Choi Dong Jin site (cdj.kr).  Run:  python3 tools/build.py
+"""Builds every page of the CDJ site (cdj.kr).  Run:  python3 tools/build.py
 
 Edit the content here (works in WORKS, texts, contact), run it, then commit the generated HTML.
 Text comes in pairs: t("English", "한국어").  Pressing L on the site switches language.
@@ -9,11 +9,11 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # ---- contact & links ----
 EMAIL = "hello@cdj.kr"
-BRAND = "Choi Dong Jin"
+BRAND = "CDJ"
 KO_SITE = "https://kindaofficial.xyz"   # the studio site
 SITE_URL = "https://cdj.kr/"   # the site's address (share links: og:url, og:image)
-ONE_LINE = "Choi Dong Jin is a Seoul-based furniture brand that connects people and space through light."
-ONE_LINE_KO = "Choi Dong Jin은 빛으로 사람과 공간, 가구를 잇는 서울의 가구 브랜드입니다."
+ONE_LINE = "CDJ is a Seoul-based furniture brand that connects people and space through light."
+ONE_LINE_KO = "CDJ는 빛으로 사람과 공간, 가구를 잇는 서울의 가구 브랜드입니다."
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2300ff00'/%3E%3C/svg%3E"
 
 
@@ -225,12 +225,12 @@ write("studio/index.html",
   <div class="body">
     {t(ONE_LINE, ONE_LINE_KO, "p", "lead")}
     <div class="en">
-    <p>Choi Dong Jin is made in Seoul by art director Jin Choi, who leads the design, and WooChan Kim, who runs business and operations. The two also run the studio <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>.</p>
-    <p>A room can be designed to look finished: correct, complete, official. Choi Dong Jin is interested in what makes it someone’s, the person who comes home, sits down and leaves a trace. The furniture notices that person and answers in light, so that a space begins to recognise the people inside it.</p>
+    <p>CDJ is made in Seoul by art director Jin Choi, who leads the design, and WooChan Kim, who runs business and operations. Jin Choi also runs the studio <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>.</p>
+    <p>A room can be designed to look finished: correct, complete, official. CDJ is interested in what makes it someone’s, the person who comes home, sits down and leaves a trace. The furniture notices that person and answers in light, so that a space begins to recognise the people inside it.</p>
     </div>
     <div class="ko" lang="ko">
-    <p>Choi Dong Jin은 디자인을 이끄는 아트디렉터 최동진과 사업과 운영을 맡은 김우찬이 서울에서 만듭니다. 두 사람은 스튜디오 <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>도 함께 운영합니다.</p>
-    <p>공간은 반듯하고 완성된, ‘공식적인’ 모습으로 설계될 수 있습니다. Choi Dong Jin은 그 공간을 누군가의 것으로 만드는 것, 집에 돌아오고, 앉고, 흔적을 남기는 사람에게 관심을 둡니다. 가구는 그 사람을 알아채고 빛으로 답해, 공간이 그 안의 사람을 알아보게 만듭니다.</p>
+    <p>CDJ는 디자인을 이끄는 아트디렉터 최동진과 사업과 운영을 맡은 김우찬이 서울에서 만듭니다. 최동진은 스튜디오 <a href="{KO_SITE}" target="_blank" rel="noopener">Kinda Official</a>도 운영합니다.</p>
+    <p>공간은 반듯하고 완성된, ‘공식적인’ 모습으로 설계될 수 있습니다. CDJ는 그 공간을 누군가의 것으로 만드는 것, 집에 돌아오고, 앉고, 흔적을 남기는 사람에게 관심을 둡니다. 가구는 그 사람을 알아채고 빛으로 답해, 공간이 그 안의 사람을 알아보게 만듭니다.</p>
     </div>
   </div>
 </section>
