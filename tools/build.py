@@ -41,7 +41,7 @@ def head(r, title, desc, body_cls="", extra="", url=None):
 <script>try{{var l=sessionStorage.getItem("site-lang");if(l){{document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l}}}}catch(e){{}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{r}assets/css/site.css?v={VER}">
 </head>
 <body{bc}>

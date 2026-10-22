@@ -24,7 +24,7 @@ a:hover { opacity: .55; }
   display: flex; align-items: center; gap: 28px;
   font-size: 12.8px; letter-spacing: .04em; text-transform: uppercase;
 }
-.logo { white-space: nowrap; font: 400 24px/1 "Instrument Serif", "Times New Roman", serif; letter-spacing: 0; text-transform: none; }
+.logo { white-space: nowrap; font: 800 19px/1 "Archivo", "Helvetica Neue", Arial, sans-serif; font-stretch: 125%; letter-spacing: -.01em; text-transform: none; }
 .logo i { font-style: italic; }
 .nav { display: flex; gap: 18px; flex-wrap: wrap; }
 .nav a[aria-current="page"] { font-weight: 700; }
